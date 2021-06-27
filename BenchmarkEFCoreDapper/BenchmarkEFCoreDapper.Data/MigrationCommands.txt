@@ -1,0 +1,3 @@
+﻿dotnet ef migrations add InitialMigration --project BenchmarkEFCoreDapper.Data
+
+dotnet ef database update --project BenchmarkEFCoreDapper.Data
