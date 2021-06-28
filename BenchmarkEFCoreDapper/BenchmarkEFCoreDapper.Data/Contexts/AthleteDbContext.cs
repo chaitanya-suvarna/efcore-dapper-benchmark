@@ -1,5 +1,6 @@
 ﻿using BenchmarkEFCoreDapper.Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace BenchmarkEFCoreDapper.Data.Contexts
 {

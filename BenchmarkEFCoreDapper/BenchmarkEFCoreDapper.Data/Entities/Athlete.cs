@@ -5,14 +5,18 @@ namespace BenchmarkEFCoreDapper.Data.Entities
     public class Athlete
     {
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [MaxLength(100)]
         public string Name { get; set; }
 
+        [Required]
         public int Age { get; set; }
 
-        public Sport Sport { get; set; }
+        [Required]
+        public int SportId { get; set; }
+
+        public virtual Sport Sport { get; set; }
     }
 }

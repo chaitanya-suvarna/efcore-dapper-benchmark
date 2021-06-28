@@ -6,7 +6,7 @@ namespace BenchmarkEFCoreDapper.Data.Entities
     public class Sport
     {
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [MaxLength(100)]
@@ -16,6 +16,6 @@ namespace BenchmarkEFCoreDapper.Data.Entities
         [MaxLength(10)]
         public string SportType { get; set; }
 
-        public List<Athlete> Athletes;
+        public virtual ICollection<Athlete> Athletes { get; set; }
     }
 }
