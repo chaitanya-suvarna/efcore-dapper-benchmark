@@ -63,7 +63,7 @@ namespace BenchmarkEFCoreDapper.Data.Repositories
             }
         }
 
-        public async Task InsertAthleteWithEFCoreAsync(string name, int age,int sportId)
+        public async Task InsertAthleteWithEFCoreAsync(string name, int age, int sportId)
         {
             var athlete = new Athlete { Name = name, Age = age, SportId = sportId };
             using (var context = _athleteDBContextFactory.Create())
@@ -76,11 +76,12 @@ namespace BenchmarkEFCoreDapper.Data.Repositories
 
         public async Task InsertAthleteWithDapperAsync(string name, int age, int sportId)
         {
-            var cmd = $"Insert into Athletes(Name, Age, SportId) values('{name}', {age}, {sportId});";
+            var cmd = "Insert into Athletes(Name, Age, SportId) values(@Name, @Age, @SportId);";
 
             using (var connection = _athleteDBContextFactory.Connection())
             {
-                await connection.ExecuteAsync(cmd).ConfigureAwait(false);
+                await connection.ExecuteAsync(cmd, new { Name = name, Age = age, SportId = sportId })
+                    .ConfigureAwait(false);
             }
         }
 
